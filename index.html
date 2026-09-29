@@ -863,6 +863,280 @@
     .gallery-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
     .g-item { height: 200px; grid-column: 1 / -1 !important; grid-row: auto !important; }
   }
+
+  /* ══════════════════════════════════════════════════════════
+     BEAUTY PARLOR COURSE SECTION
+  ══════════════════════════════════════════════════════════ */
+  .course-section {
+    position: relative;
+    overflow: hidden;
+  }
+  .course-section::before {
+    content: '';
+    position: absolute; top: -200px; right: -200px;
+    width: 700px; height: 700px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(197, 160, 89, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .course-section::after {
+    content: '';
+    position: absolute; bottom: -150px; left: -150px;
+    width: 500px; height: 500px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(158, 42, 75, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .course-layout {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: clamp(36px, 5vw, 64px);
+    align-items: start;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Course Info Card */
+  .course-info-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-rose);
+    border-radius: var(--r);
+    padding: clamp(32px, 4vw, 48px);
+    box-shadow: var(--shadow-md);
+    position: relative;
+    overflow: hidden;
+  }
+  .course-info-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--rose-primary), var(--gold), var(--rose-bright));
+  }
+
+  .course-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 16px; border-radius: 999px;
+    background: linear-gradient(135deg, rgba(197, 160, 89, 0.15), rgba(196, 56, 98, 0.1));
+    border: 1px solid var(--border-gold);
+    font-size: .72rem; font-weight: 600; letter-spacing: .18em;
+    text-transform: uppercase; color: var(--gold-lt);
+    margin-bottom: 20px;
+    animation: badgePulse 2.5s infinite;
+  }
+  .course-badge::before {
+    content: '🎓'; font-size: .9rem;
+  }
+  @keyframes badgePulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(197, 160, 89, 0.3); }
+    50% { box-shadow: 0 0 0 8px rgba(197, 160, 89, 0); }
+  }
+
+  .course-info-card h3 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 400; line-height: 1.1;
+    color: var(--text-main);
+    margin-bottom: 16px;
+  }
+  .course-info-card h3 em {
+    font-style: italic; color: var(--gold-lt);
+  }
+
+  .course-info-card > p {
+    color: var(--text-sub); font-size: .98rem;
+    line-height: 1.72; margin-bottom: 28px;
+    max-width: 520px;
+  }
+
+  /* Course Highlights Grid */
+  .course-highlights {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+  .course-highlight {
+    padding: 18px 16px;
+    background: rgba(18, 8, 13, 0.6);
+    border: 1px solid var(--border-subtle);
+    border-radius: 10px;
+    transition: all .25s;
+  }
+  .course-highlight:hover {
+    border-color: var(--rose-bright);
+    background: rgba(196, 56, 98, 0.08);
+    transform: translateY(-2px);
+  }
+  .course-highlight .ch-icon {
+    font-size: 1.3rem; margin-bottom: 8px; display: block;
+  }
+  .course-highlight strong {
+    display: block; font-size: .88rem; font-weight: 600;
+    color: var(--text-main); margin-bottom: 4px;
+  }
+  .course-highlight span {
+    font-size: .78rem; color: var(--text-sub); line-height: 1.5;
+  }
+
+
+  .course-cta-row {
+    display: flex; flex-wrap: wrap; gap: 14px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  /* Course Enquiry Form Card */
+  .course-form-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-gold);
+    border-radius: var(--r);
+    padding: clamp(28px, 4vw, 44px);
+    box-shadow: var(--shadow-lg);
+    position: sticky;
+    top: 92px;
+  }
+  .course-form-card h4 {
+    font-family: "Playfair Display", serif;
+    font-size: 1.6rem; font-weight: 400;
+    color: var(--gold-pale);
+    margin-bottom: 6px;
+  }
+  .course-form-card > p {
+    font-size: .86rem; color: var(--text-sub);
+    margin-bottom: 24px; line-height: 1.6;
+  }
+
+  .course-form-card .field textarea {
+    width: 100%; padding: 13px 16px; border-radius: 8px;
+    border: 1px solid var(--border-subtle); background: var(--bg-dark-2);
+    color: var(--text-main); font-family: inherit; font-size: .95rem;
+    outline: none; transition: border-color .2s, box-shadow .2s;
+    resize: vertical; min-height: 80px;
+  }
+  .course-form-card .field textarea:focus {
+    border-color: var(--rose-bright);
+    box-shadow: 0 0 12px var(--rose-glow);
+  }
+
+  /* Form success animation */
+  .form-success-msg {
+    display: none; text-align: center; padding: 32px 16px;
+  }
+  .form-success-msg.show { display: block; }
+  .form-success-msg .success-icon {
+    width: 64px; height: 64px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--rose-primary), var(--gold));
+    display: grid; place-items: center;
+    margin: 0 auto 16px; font-size: 1.6rem; color: #fff;
+    animation: successPop .5s cubic-bezier(.2,.8,.2,1);
+  }
+  @keyframes successPop {
+    0% { transform: scale(0); opacity: 0; }
+    60% { transform: scale(1.15); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  .form-success-msg h5 {
+    font-family: "Playfair Display",serif;
+    font-size: 1.3rem; color: var(--gold-pale);
+    margin-bottom: 6px; font-weight: 400;
+  }
+  .form-success-msg p { font-size: .88rem; color: var(--text-sub); }
+
+  /* Shake animation for validation */
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-6px); }
+    40%, 80% { transform: translateX(6px); }
+  }
+
+  /* Responsive — Tablet (≤900px) */
+  @media (max-width: 900px) {
+    .course-layout {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .course-form-card {
+      position: static;
+      order: 2;
+    }
+    .course-info-card {
+      order: 1;
+    }
+    .course-info-card > p {
+      max-width: 100%;
+    }
+    .course-highlights {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  /* Responsive — Mobile (≤600px) */
+  @media (max-width: 600px) {
+    .course-layout {
+      gap: 24px;
+    }
+    .course-info-card {
+      padding: 24px 20px;
+    }
+    .course-info-card h3 {
+      font-size: 1.65rem;
+    }
+    .course-info-card > p {
+      font-size: .92rem;
+      margin-bottom: 20px;
+    }
+    .course-highlights {
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .course-highlight {
+      padding: 14px 12px;
+    }
+    .course-highlight .ch-icon {
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+    }
+    .course-highlight strong {
+      font-size: .82rem;
+    }
+    .course-highlight span {
+      font-size: .72rem;
+    }
+    .course-cta-row {
+      flex-direction: column;
+      gap: 10px;
+    }
+    .course-cta-row .btn {
+      width: 100%;
+      justify-content: center;
+    }
+    .course-form-card {
+      padding: 24px 20px;
+    }
+    .course-form-card h4 {
+      font-size: 1.35rem;
+    }
+    .course-badge {
+      font-size: .65rem;
+      padding: 5px 12px;
+    }
+  }
+
+  /* Responsive — Small phones (≤380px) */
+  @media (max-width: 380px) {
+    .course-highlights {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+    .course-info-card h3 {
+      font-size: 1.45rem;
+    }
+    .course-info-card {
+      padding: 20px 16px;
+    }
+    .course-form-card {
+      padding: 20px 16px;
+    }
+  }
   </style>
 </head>
 
@@ -888,6 +1162,7 @@
       <li><a href="#services">Services</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#courses">Courses</a></li>
       <li><a href="#visit">Visit</a></li>
     </ul>
 
@@ -918,6 +1193,7 @@
     <li><a href="#services" class="nav-link-m">Services</a></li>
     <li><a href="#about"    class="nav-link-m">About</a></li>
     <li><a href="#gallery"  class="nav-link-m">Gallery</a></li>
+    <li><a href="#courses"  class="nav-link-m">Courses</a></li>
     <li><a href="#visit"    class="nav-link-m">Visit</a></li>
   </ul>
   <div class="drawer-cta">
@@ -1256,6 +1532,102 @@
 </section>
 
 <!-- ══════════════════════════════════════════════════════════
+     BEAUTY PARLOR COURSE SECTION
+══════════════════════════════════════════════════════════ -->
+<section class="section section-dark-3 course-section" id="courses" aria-labelledby="course-title">
+  <div class="wrap">
+
+    <div class="section-head" data-reveal>
+      <p class="section-label">Learn From The Best</p>
+      <h2 id="course-title">Professional Beauty<br>Parlor Course</h2>
+      <p>A complete hands-on beauty course taught personally by Anita Patel — covering bridal makeup, hair, skin, nails &amp; more.</p>
+    </div>
+
+    <div class="course-layout">
+
+      <!-- Course Info -->
+      <div class="course-info-card" data-reveal="left">
+        <div class="course-badge">Admissions Open</div>
+        <h3>Master the Art of <em>Professional Beauty</em></h3>
+        <p>Learn everything from bridal makeup to advanced facials, hair treatments, nail art, and wellness — all in one comprehensive course designed for beginners to advanced learners.</p>
+
+        <div class="course-highlights">
+          <div class="course-highlight">
+            <span class="ch-icon">👩‍🏫</span>
+            <strong>Personal Training</strong>
+            <span>Directly by Anita Patel — 12+ years expert</span>
+          </div>
+          <div class="course-highlight">
+            <span class="ch-icon">🛠️</span>
+            <strong>Hands-on Practice</strong>
+            <span>Real-time practice on live models</span>
+          </div>
+          <div class="course-highlight">
+            <span class="ch-icon">📜</span>
+            <strong>Certificate</strong>
+            <span>Professional certificate on completion</span>
+          </div>
+          <div class="course-highlight">
+            <span class="ch-icon">💼</span>
+            <strong>Job Ready</strong>
+            <span>Start your own salon or work anywhere</span>
+          </div>
+        </div>
+
+        <div class="course-cta-row">
+          <a class="btn btn-rose-solid" href="https://wa.me/917600949586?text=Hi%20Anita%20Salon!%20I%20am%20interested%20in%20the%20Beauty%20Parlor%20Course.%20Please%20share%20the%20details." target="_blank" rel="noopener noreferrer">Enquire on WhatsApp</a>
+          <a class="btn btn-gold-outline" href="tel:+917600949586">📞 Call for Details</a>
+        </div>
+      </div>
+
+      <!-- Course Enquiry Form -->
+      <div class="course-form-card" data-reveal="right">
+        <h4>Quick Enquiry</h4>
+        <p>Drop your details and we'll share all the course information via WhatsApp.</p>
+        <form id="courseForm" onsubmit="submitCourseForm(event)" novalidate>
+          <div class="field">
+            <label for="cName">Your Name *</label>
+            <input type="text" id="cName" name="name" placeholder="e.g. Priya Sharma" required autocomplete="name" />
+          </div>
+          <div class="field">
+            <label for="cPhone">WhatsApp Number *</label>
+            <input type="tel" id="cPhone" name="phone" placeholder="e.g. 98765 43210" required autocomplete="tel" />
+          </div>
+          <div class="field">
+            <label for="cCity">City / Area</label>
+            <input type="text" id="cCity" name="city" placeholder="e.g. Surat, Varachha" autocomplete="address-level2" />
+          </div>
+          <div class="field">
+            <label for="cExperience">Current Experience</label>
+            <select id="cExperience" name="experience">
+              <option value="" disabled selected>Select your level…</option>
+              <option>Beginner</option>
+              <option>Basic</option>
+              <option>Intermediate</option>
+              <option>Advanced</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="cMessage">Your Message (Optional)</label>
+            <textarea id="cMessage" name="message" placeholder="Koi sawaal ya specific query likho..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-rose-solid" style="width:100%;margin-top:8px;border-radius:8px;" id="courseSubmitBtn">
+            Send Enquiry via WhatsApp
+          </button>
+        </form>
+
+        <div class="form-success-msg" id="courseSuccessMsg">
+          <div class="success-icon">✓</div>
+          <h5>Enquiry Sent!</h5>
+          <p>Your enquiry has been sent. We will contact you shortly.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
      CONTACT / VISIT SECTION
 ══════════════════════════════════════════════════════════ -->
 <section class="section section-dark-2" id="visit" aria-labelledby="visit-title">
@@ -1496,6 +1868,35 @@ function submitModal(e) {
 /* ── Date input min constraint ── */
 const bDate = document.getElementById('bDate');
 if (bDate) bDate.min = new Date().toISOString().split('T')[0];
+
+/* ── Course Enquiry Form ── */
+function submitCourseForm(e) {
+  e.preventDefault();
+  const name = document.getElementById('cName').value.trim();
+  const phone = document.getElementById('cPhone').value.trim();
+
+  if (!name || !phone) {
+    const btn = document.getElementById('courseSubmitBtn');
+    btn.style.animation = 'none';
+    btn.offsetHeight;
+    btn.style.animation = 'shake .4s ease';
+    return;
+  }
+
+  const msg = `Hello Anita Beauty Salon! 🎓\n\nI am interested in the Beauty Parlor Course.\n\n• Name: ${name}\n• Phone: ${phone}\n\nPlease share the course details and fees. Thank you!`;
+
+  const form = document.getElementById('courseForm');
+  const successMsg = document.getElementById('courseSuccessMsg');
+  if (form) form.style.display = 'none';
+  if (successMsg) successMsg.classList.add('show');
+
+  window.open('https://wa.me/917600949586?text=' + encodeURIComponent(msg), '_blank');
+
+  setTimeout(() => {
+    if (form) { form.style.display = ''; form.reset(); }
+    if (successMsg) successMsg.classList.remove('show');
+  }, 4000);
+}
 </script>
 
 </body>
